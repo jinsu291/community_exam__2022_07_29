@@ -7,6 +7,7 @@ public class ArticleService {
         articleRepository = new ArticleRepository();
     }
 
+
     public long write(String title, String body) {
         return articleRepository.write(title, body);
     }
