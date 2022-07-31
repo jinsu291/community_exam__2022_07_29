@@ -94,13 +94,13 @@ public class Rq {
     public long getLongPathValueByIndex(int index, long defaultValue) {
         String value = getPathValueByIndex(index, null);
 
-        if(value ==  null){
+        if (value == null) {
             return defaultValue;
         }
-        try{
+
+        try {
             return Long.parseLong(value);
-        }
-        catch ( NumberFormatException e){
+        } catch (NumberFormatException e) {
             return defaultValue;
         }
     }
@@ -110,9 +110,24 @@ public class Rq {
 
         try {
             return bits[4 + index];
-        }
-        catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             return defaultValue;
         }
+    }
+
+    public void replace(String uri, String msg) {
+        if (msg != null && msg.trim().length() > 0) {
+            println("""
+                    <script>
+                    alert("%s");
+                    </script>
+                    """.formatted(msg));
+        }
+
+        println("""
+                <script>
+                location.replace("%s");
+                </script>
+                """.formatted(uri));
     }
 }
